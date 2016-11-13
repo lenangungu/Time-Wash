@@ -9,17 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var counter = 1800
+    var counter = 5
     var timer = NSTimer()
     let timeInterval:NSTimeInterval = 0.5
     let timerEnd:NSTimeInterval = 0.0
     var timeCount:NSTimeInterval = 7200.0
-    
-    var counter2 = 1800
+    let done = "Machine 1"
+    var counter2 = 5
     var timer2 = NSTimer()
     let timeInterval2:NSTimeInterval = 0.5
     let timerEnd2:NSTimeInterval = 0.0
     var timeCount2:NSTimeInterval = 7200.0
+    let done2 = "Machine 2"
+    
+    
     
     @IBOutlet weak var machine1: UIButton!
     @IBOutlet weak var time1: UILabel!
@@ -31,9 +34,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       setupNotificationSettings()
     }
     
+    func scheduleLocalNotification(word: String) {
+        let myWord = word
+        let localNotification = UILocalNotification()
+     
+        localNotification.alertBody = "\(myWord) is Done"
+        localNotification.alertAction = "Ok"
+        localNotification.category = "shoppingListReminderCategory"
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+          }
 
     
     @IBAction func machine1Action(sender: AnyObject) {
@@ -57,8 +70,13 @@ class ViewController: UIViewController {
         if ( counter == 0)
         {
             time1.text = "Done"
-        }
+         scheduleLocalNotification(done)
+             counter = (counter - 1)
+           
+            }
+        
     }
+    
     
    
     @IBAction func machine2Action(sender: AnyObject) {
@@ -73,22 +91,51 @@ class ViewController: UIViewController {
             let minutes2 = Int(counter2) / 60 % 60
             let seconds2 = Int(counter2) % 60
             time2.text = String(format:"%02i:%02i", minutes2, seconds2)
-            
             counter2 = (counter2 - 1)
+            
         }
         else
-        if ( counter2 == 0)
-        {
-            time2.text = "Done"
+            if ( counter2 == 0)
+            {
+                time2.text = "Done"
+            
+                scheduleLocalNotification(done2)
+                counter2 = (counter2 - 1)
+            }
+    
+    }
+    
+    func setupNotificationSettings() {
+       
+        let notificationSettings: UIUserNotificationSettings! = UIApplication.sharedApplication().currentUserNotificationSettings()
+        
+        if (notificationSettings.types == UIUserNotificationType.None){
+    
+            let notificationTypes: UIUserNotificationType = UIUserNotificationType.Alert
+            UIUserNotificationType.Sound
+
+            let shoppingListReminderCategory = UIMutableUserNotificationCategory()
+            shoppingListReminderCategory.identifier = "shoppingListReminderCategory"
+
+            
+            
+            let categoriesForSettings = NSSet(objects: shoppingListReminderCategory)
+            
+         
+            let newNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: categoriesForSettings as? Set<UIUserNotificationCategory>)
+            UIApplication.sharedApplication().registerUserNotificationSettings(newNotificationSettings)
         }
     }
     
-  
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+   
 }
+
+
+
 
