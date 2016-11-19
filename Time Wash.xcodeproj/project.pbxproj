@@ -12,6 +12,7 @@
 		8AE49F211DD81E9100728792 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE49F1F1DD81E9100728792 /* Main.storyboard */; };
 		8AE49F231DD81E9100728792 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AE49F221DD81E9100728792 /* Assets.xcassets */; };
 		8AE49F261DD81E9100728792 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AE49F241DD81E9100728792 /* LaunchScreen.storyboard */; };
+		8AE49F2E1DD8BB6800728792 /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE49F2D1DD8BB6700728792 /* KDCircularProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8AE49F221DD81E9100728792 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AE49F251DD81E9100728792 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8AE49F271DD81E9100728792 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE49F2D1DD8BB6700728792 /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				8AE49F1B1DD81E9100728792 /* AppDelegate.swift */,
 				8AE49F1D1DD81E9100728792 /* ViewController.swift */,
 				8AE49F1F1DD81E9100728792 /* Main.storyboard */,
+				8AE49F2D1DD8BB6700728792 /* KDCircularProgress.swift */,
 				8AE49F221DD81E9100728792 /* Assets.xcassets */,
 				8AE49F241DD81E9100728792 /* LaunchScreen.storyboard */,
 				8AE49F271DD81E9100728792 /* Info.plist */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE49F2E1DD8BB6800728792 /* KDCircularProgress.swift in Sources */,
 				8AE49F1E1DD81E9100728792 /* ViewController.swift in Sources */,
 				8AE49F1C1DD81E9100728792 /* AppDelegate.swift in Sources */,
 			);

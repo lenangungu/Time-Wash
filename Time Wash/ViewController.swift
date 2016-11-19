@@ -5,7 +5,7 @@
 //  Created by Lena Ngungu on 11/12/16.
 //  Copyright © 2016 Lena Ngungu. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 class ViewController: UIViewController {
@@ -26,15 +26,19 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var machine1: UIButton!
     @IBOutlet weak var time1: UILabel!
+    @IBOutlet weak var resetButton1: UIButton!
   
     
    
     @IBOutlet weak var machine2: UIButton!
     @IBOutlet weak var time2: UILabel!
+    @IBOutlet weak var resetButton2: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
        setupNotificationSettings()
+        resetButton1.alpha = 0
+        resetButton2.alpha = 0
     }
     
     func scheduleLocalNotification(word: String) {
@@ -63,6 +67,8 @@ class ViewController: UIViewController {
         let minutes = Int(counter) / 60 % 60
         let seconds = Int(counter) % 60
         time1.text = String(format:"%02i:%02i", minutes, seconds)
+           
+        //circularProgressView.animateFromAngle(circularProgressView.angle, toAngle: 0, duration: 0.5, completion: nil)
      
             counter = (counter - 1)
         }
@@ -70,6 +76,7 @@ class ViewController: UIViewController {
         if ( counter == 0)
         {
             time1.text = "Done"
+            resetButton1.alpha = 1
          scheduleLocalNotification(done)
              counter = (counter - 1)
            
@@ -95,10 +102,10 @@ class ViewController: UIViewController {
             
         }
         else
-            if ( counter2 == 0)
+            if (counter2 == 0)
             {
                 time2.text = "Done"
-            
+                resetButton2.alpha = 1 
                 scheduleLocalNotification(done2)
                 counter2 = (counter2 - 1)
             }
@@ -135,7 +142,6 @@ class ViewController: UIViewController {
     
    
 }
-
 
 
 
