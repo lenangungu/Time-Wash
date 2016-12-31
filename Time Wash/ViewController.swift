@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     let timerEnd:NSTimeInterval = 0.0
     var timeCount:NSTimeInterval = 7200.0
     let done = "Machine 1"
+   
+    
     var counter2 = 5
     var timer2 = NSTimer()
     let timeInterval2:NSTimeInterval = 0.5
@@ -54,16 +56,16 @@ class ViewController: UIViewController {
 
     
     @IBAction func machine1Action(sender: AnyObject) {
-        
+       
         machine1.enabled = false
-    timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.timeString as (ViewController) -> () -> ()), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(ViewController.timeString as (ViewController) -> () -> ()), userInfo: nil, repeats: true)
     }
 
 
+    
     func timeString() {
         if counter > 0
         {
-
         let minutes = Int(counter) / 60 % 60
         let seconds = Int(counter) % 60
         time1.text = String(format:"%02i:%02i", minutes, seconds)
@@ -72,14 +74,16 @@ class ViewController: UIViewController {
      
             counter = (counter - 1)
         }
+        
+            
         else
-        if ( counter == 0)
+        if  counter == 0
         {
             time1.text = "Done"
             resetButton1.alpha = 1
-         scheduleLocalNotification(done)
-             counter = (counter - 1)
-           
+            scheduleLocalNotification(done)
+            machine1.enabled = true
+            timer.invalidate()
             }
         
     }
@@ -105,11 +109,25 @@ class ViewController: UIViewController {
             if (counter2 == 0)
             {
                 time2.text = "Done"
-                resetButton2.alpha = 1 
+                resetButton2.alpha = 1
                 scheduleLocalNotification(done2)
-                counter2 = (counter2 - 1)
+                machine2.enabled = true
+                timer2.invalidate()
             }
     
+    }
+    
+    @IBAction func resetAction1(sender: AnyObject) {
+        resetButton1.alpha = 0
+        time1.text = "OFF"
+        counter = 5
+       
+    }
+    
+    @IBAction func resteAction2(sender: AnyObject) {
+        resetButton2.alpha = 0
+        time2.text = "OFF"
+        counter2 = 5
     }
     
     func setupNotificationSettings() {
